@@ -1,0 +1,35 @@
+스테이징은 시장이다 여기서 원하는 소스를 뽑아갈수 있다
+   staging <= market
+- 그냥 소스를 추가하면 Untracked files 가 된다
+  즉 git 이 아직 이 화일이 시장에 등록되어 있다고 보지 않기 때문이다
+  이때 그냥 디렉토리만 추가하면 git status 에서도 나타나지 않는다
+  디렉토리 추가후 반드시 화일이 있어야 git status 에서도 보인다
+  그리고 반드시 해당 디렉토리로 이동해서 명령을 수행할 필요는 없다
+  최상위에서 해도 잘 수행된다 
+ - 그렇다면 시장에 물건을 등록하려면 
+   git add file.ext 라고 쳐준다
+   이때 file.ext 가 있는 디렉토리에서 해줘야 하는지는 잘모르겠지만...안해줘도 되지 않을까?
+   아니다 해줘야 할듯... 왜냐하면 git add. 이라는 명령이 해당 폴더에 있는 전체 소스를 올리는 것인데
+   그렇다면 어디에서 해줘야 하는지 알 필요가 있기때문에
+ - git commit 를 통해서 커밋을 만든다 이때 아무때나 만들수 있는게 아니고 위와 같이 수정사항이 있을
+   때야 가능하다
+  - commit 을 만들때는 -m 옵션을 봍여준다
+    git commit -m "[v2.0]add 혹은 Modify, fix 등등...을 쓸수 있다   
+- 등록하고 다시 commit 하는게 귀찮다면 한큐에 바로 할수도 있다
+   git commit -am " 한큐에 하는 것"
+- 만약 commit 이 이미 끝났는데 수정 내용이 하나 빠져있거나 또는 추가가 필요할 경우에는
+  git commit --amend 를 사용한다.
+  이것은 이전 commit 에 적용하는 것이라 수정이 끝나고 바로 해야 효과가 있다
+- 만약 branch 를 하나 만든다면 
+  git branch feature master 로 할수 있다
+  이러면 feature 라는 브랜치를 master 에서 가져와서 새로 생성된 브랜치가 된다  
+- 브랜치를 생성했다면 이제 새롭게 생성된 branch 에서 작업을 해야 하므로
+  git checkout feature 라고 해준다 그러면 현재 작업하는 branch 가 feature 로 변경된다
+- 그런데 master 에서 branch 를 따서 작업하는 것은 흔히 있을수 있는 일이므로 
+   master 에서 생성되는 branch 생성과 checkout 을 한번에 할수도 있다
+   그때는 git checkout -b feature 라고 해주면 됨
+-  만약 feature 에서 add 나 또는 소스 수정을 하고 이것을 master 브랜치에 통합할려면
+   git checkout master <= 작업공간을 master에서 하겠다는 뜻
+   git merge feature <= 현재 작업공간에 feature 를 병합한다는 뜻
+   
+https://jeonghwan-kim.github.io/dev/2020/02/10/git-usage.html
